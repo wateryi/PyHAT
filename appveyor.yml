@@ -10,6 +10,8 @@ environment:
       PYTHON_VERSION: 3.5
     - PYTHON: "C:\\Miniconda36-x64\\Scripts\\activate.bat"
       PYTHON_VERSION: 3.6
+    - PYTHON: "C:\\Miniconda36-x64\\Scripts\\activate.bat"
+      PYTHON_VERSION: 3.7
 
 platform:
   - x64
@@ -20,6 +22,7 @@ configuration:
 install:
   - cmd: call %PYTHON%
   - cmd: conda config --set always_yes yes --set changeps1 no
+  - cmd: conda update -q conda
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%
   - cmd: activate test_env

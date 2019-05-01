@@ -26,6 +26,7 @@ install:
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%
   - cmd: conda activate test_env
+  - cmd: mklink /J C:\Miniconda3-x64 C:\Miniconda36-x64
   - cmd: conda config --add channels conda-forge
   - cmd: conda install -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch pvl
   - cmd: conda install -c usgs-astrogeology plio

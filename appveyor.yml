@@ -22,6 +22,7 @@ configuration:
 install:
   - cmd: mkdir C:\Users\appveyor\.conda
   - cmd: call %PYTHON%
+  - cmd: conda update -q conda
   - cmd: conda config --set always_yes yes --set changeps1 no
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%

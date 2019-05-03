@@ -21,7 +21,6 @@ configuration:
 
 install:
   - cmd: mkdir C:\Users\appveyor\.conda
-  - cmd: %MINICONDA%\Scripts\activate.bat
   - cmd: call %PYTHON%
   - cmd: conda config --set always_yes yes --set changeps1 no
   - cmd: conda install conda-build anaconda-client

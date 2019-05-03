@@ -20,7 +20,6 @@ configuration:
   - Release
 
 install:
-  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;
   - cmd: mkdir C:\Users\appveyor\.conda
   - cmd: %MINICONDA%\Scripts\activate.bat
   - cmd: call %PYTHON%

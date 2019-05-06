@@ -1,6 +1,5 @@
 branches:
   only:
-  - master
   - dev
 version: '0.1.0.{build}'
 
@@ -20,13 +19,12 @@ configuration:
   - Release
 
 install:
-  - cmd: mkdir C:\Users\appveyor\.conda
   - cmd: call %PYTHON%
-  - cmd: conda update -q conda
   - cmd: conda config --set always_yes yes --set changeps1 no
+  - cmd: conda update -q conda
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%
-  - cmd: conda activate test_env
+  - cmd: activate test_env
   - cmd: conda config --add channels conda-forge
   - cmd: conda install -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch pvl
   - cmd: conda install -c usgs-astrogeology plio

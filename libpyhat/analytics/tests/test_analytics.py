@@ -7,6 +7,7 @@ import libpyhat as phat
 from libpyhat.analytics import analytics
 from libpyhat.examples import get_path
 
+@pytest.fixture
 def setUp():
     np.random.seed(seed=12345)
     return np.random.random(25)

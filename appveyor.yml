@@ -21,7 +21,7 @@ configuration:
 install:
   - set PATH="C:\\Miniconda36-x64\\Scripts\\";"C:\\Miniconda36-x64\\";%PATH%
   - cmd: call %PYTHON%
-  - cmd: echo %CONDA_UPLOAD_TOKEN%
+  - echo %CONDA_UPLOAD_TOKEN%
   - cmd: conda config --set always_yes yes --set changeps1 no
   - cmd: conda update -q conda
   - cmd: conda install conda-build anaconda-client

@@ -25,8 +25,8 @@ install:
   - cmd: conda update -q conda
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%
-  - cmd: conda activate test_env
-  - cmd: source deactivate
+  - cmd: activate test_env
+  - cmd: deactivate
   - cmd: conda config --add channels conda-forge
   - cmd: conda config --set ssl_verify false
   - cmd: conda install -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch pvl

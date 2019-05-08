@@ -11,9 +11,9 @@ def setUp():
     np.random.seed(seed=12345)
     return np.random.random(25)
 
-def test_band_minima( ):
+def test_band_minima():
     setup = setUp()
-    minidx, minvalue = analytics.band_minima(setUp)
+    minidx, minvalue = analytics.band_minima(setup)
     assert minidx == 12
     assert minvalue == pytest.approx(0.008388297)
 
@@ -21,8 +21,9 @@ def test_band_minima( ):
                                             (0, 7, 2, 0.18391881),
                                             pytest.param(6, 1, 0, 0, marks=pytest.mark.xfail)]
 )
-def test_band_minima_bounds(lower_bound, upper_bound, expected_idx, expected_val, setUp()):
-    minidx, minvalue = analytics.band_minima(setUp(), lower_bound, upper_bound)
+def test_band_minima_bounds(lower_bound, upper_bound, expected_idx, expected_val):
+    setup = setUp()
+    minidx, minvalue = analytics.band_minima(setup, lower_bound, upper_bound)
     assert minidx == expected_idx
     assert minvalue == pytest.approx(expected_val)
 

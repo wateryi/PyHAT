@@ -25,7 +25,7 @@ install:
   - cmd: conda update -q conda
   - cmd: conda install conda-build anaconda-client
   - cmd: conda create -q -n test_env python=%PYTHON_VERSION%
-  - cmd: conda activate test_env
+  - cmd: activate test_env
   - cmd: conda config --add channels conda-forge
   - cmd: conda config --set ssl_verify false
   - cmd: conda install -c conda-forge numpy scipy pandas gdal scikit-learn multipledispatch pvl
@@ -42,6 +42,5 @@ test_script:
   - cmd: pytest libpyhat/
 
 on_success:
-  - cmd: conda activate root
   - cmd: conda config --set anaconda_upload yes
   - cmd: conda build --token %CONDA_UPLOAD_TOKEN% --channel conda-forge --channel usgs-astrogeology .

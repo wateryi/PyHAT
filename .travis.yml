@@ -24,24 +24,20 @@ before_install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
+  - conda config --add channels usgs-astrogeology
+  - conda config --add channels conda-forge
+  - conda update conda
   - conda info -a   # Useful for debugging any issues with conda
-  # Create the env
-  - conda create -q -n test_env python=$PYTHON_VERSION
-  - source activate test_env
+  - conda install pyhat
+  # Create the env using the environment.yml
+  - conda env create -n pyhat-env -f environment.yml
+  - source activate pyhat-env
 
 install:
   # Install dependencies
-  - conda config --add channels usgs-astrogeology
-  - conda config --add channels conda-forge
-  # - conda install --quiet -c conda-forge numpy scipy pandas gdal libgdal scikit-learn multipledispatch
-  # - conda install --quiet -c usgs-astrogeology plio
-  - conda env update -n test_env -f environment.yml
-  # https://github.com/GoogleCloudPlatform/google-cloud-python/issues/2990
   - conda install pip setuptools
-
   # Development installation
-  - conda install --quiet pytest pytest-cov nbsphinx
+  - conda install pytest pytest-cov nbsphinx
   - pip install coveralls travis-sphinx
 
 script:
@@ -56,6 +52,6 @@ after_success:
   - conda config --set anaconda_upload yes
   - conda build --token $CONDA_UPLOAD_TOKEN --python $PYTHON_VERSION .
   # Docs to gh-pages
-  - source activate test_env  # Reactivate the env to have all deps installed.
+  - source activate pyhat-env  # Reactivate the env to have all deps installed.
   - travis-sphinx build --source=docs --nowarn # The sphinx build script
   - travis-sphinx deploy --branches=dev

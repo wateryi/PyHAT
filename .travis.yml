@@ -45,7 +45,8 @@ install:
   - pip install coveralls travis-sphinx
 
 script:
-  - pytest
+  - python setup.py develop
+  - pytest --cov=libpyhat
 
 after_success:
   # Code Coverage

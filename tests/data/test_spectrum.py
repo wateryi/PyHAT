@@ -30,6 +30,7 @@ def floatwv_spectrum():
                     index=[1.10001, 2.222222, 3.33300015],
                     wavelengths=[1.10001, 2.222222, 3.33300015])
 
+@pytest.fixture
 def floatwv_metadata_spectrum():
     return Spectrum([1,2,3, 'a', 'b', 'c'],
                     index=[1.10001, 2.222222, 3.33300015, 'foo', 'bar', 'bat'],

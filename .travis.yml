@@ -46,7 +46,7 @@ install:
 
 script:
   - python setup.py install
-  - pytest --cov=pyhat
+  - pytest --cov=libpyhat
 
 after_success:
   # Code Coverage

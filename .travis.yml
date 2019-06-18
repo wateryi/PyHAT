@@ -28,7 +28,7 @@ before_install:
   - conda info -a   # Useful for debugging any issues with conda
   # Create the env
   - conda create -q -n test_env python=$PYTHON_VERSION
-  - conda activate test_env
+  - source activate test_env
 
 install:
   # Install dependencies

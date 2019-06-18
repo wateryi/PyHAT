@@ -28,7 +28,6 @@ before_install:
   - conda config --add channels conda-forge
   - conda update conda
   - conda info -a   # Useful for debugging any issues with conda
-  - conda install pyhat
   # Create the env using the environment.yml
   - conda env create -n pyhat-env -f environment.yml
   - source activate pyhat-env
@@ -41,6 +40,7 @@ install:
   - pip install coveralls travis-sphinx
 
 script:
+  - python setup.py install
   - pytest --cov=libpyhat
 
 after_success:

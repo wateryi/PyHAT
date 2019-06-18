@@ -5,7 +5,6 @@ import pytest
 import libpyhat
 from libpyhat import Spectra, Spectrum
 
-@pytest.fixture
 def spectra():
     return Spectra(np.arange(1,17).reshape(4,4),
                    index=[2.22221, 3.33331, 4.400001, 5.500001],

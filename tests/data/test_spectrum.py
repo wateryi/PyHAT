@@ -11,31 +11,45 @@ def basic_spectrum():
                     index=[2.2, 3.3, 4.4, 5.5],
                     wavelengths=[2.2, 3.3, 4.4, 5.5])
 
-@pytest.fixture
+# Fixtures were fixed according to: https://docs.pytest.org/en/latest/deprecations.html#calling-fixtures-directly
+
 def long_spectrum():
     return Spectrum([1, 1.5, 2, 2.5, 5, 3, 3.5, 7, 4, 4.5, 5],
                     index=np.arange(1,12),
                     wavelengths=np.arange(1,12))
 
-@pytest.fixture
 def metadata_spectrum():
     return Spectrum([1,2,3,4, 'a', 'b', 'c'],
                     index=[2.2, 3.3, 4.4, 5.5, 'foo', 'bar', 'bat'],
                     wavelengths=[2.2, 3.3, 4.4, 5.5],
                     metadata=['foo', 'bar', 'bat'])
 
-@pytest.fixture
 def floatwv_spectrum():
     return Spectrum([1,2,3],
                     index=[1.10001, 2.222222, 3.33300015],
                     wavelengths=[1.10001, 2.222222, 3.33300015])
 
-@pytest.fixture
 def floatwv_metadata_spectrum():
     return Spectrum([1,2,3, 'a', 'b', 'c'],
                     index=[1.10001, 2.222222, 3.33300015, 'foo', 'bar', 'bat'],
                     wavelengths=[1.10001, 2.222222, 3.33300015],
                     metadata=['foo', 'bar', 'bat'])
+
+@pytest.fixture(name="long_spectrum")
+def long_spectrum_fixture():
+    return long_spectrum()
+
+@pytest.fixture(name="metadata_spectrum")
+def metadata_spectrum_fixture():
+    return metadata_spectrum()
+
+@pytest.fixture(name="floatwv_spectrum")
+def floatwv_spectrum_fixture():
+    return floatwv_spectrum()
+
+@pytest.fixture(name="floatwv_metadata_spectrum")
+def floatwv_metadata_spectrum_fixture():
+    return floatwv_metadata_spectrum()
 
 def test_slice_return_spectrum(basic_spectrum):
     assert isinstance(basic_spectrum[1:2], Spectrum)

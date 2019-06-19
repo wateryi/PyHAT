@@ -58,5 +58,3 @@ on_success:
                       "$anaconda_label", '--force', '--no-progress';
         & cmd /c 'anaconda 2>&1' $parameters;
       };
-  # - cmd: conda config --set anaconda_upload yes
-  # - cmd: conda build --token %CONDA_UPLOAD_TOKEN% --channel conda-forge --channel usgs-astrogeology .

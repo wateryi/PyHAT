@@ -1,7 +1,6 @@
 import pytest
 import numpy as np
 
-
 def n_dim(n):
     return np.repeat(np.arange(1, n + 2), (25)).reshape(1,-1,5)
 

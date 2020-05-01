@@ -147,9 +147,9 @@ def test_KRR():
                                   'coef0': 1.0,
                                   'kernel_params': 'None'}])
 test_PLS()
-test_GP()
+#test_GP()
 test_OLS()
-test_OMP()
+#test_OMP()
 test_Lasso()
 test_Elastic_Net()
 test_Ridge()
